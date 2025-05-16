@@ -1,0 +1,840 @@
+/* ---------------------- */
+/* Import des polices     */
+/* ---------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700&display=swap');
+
+/* ---------------------- */
+/* Styles globaux         */
+/* ---------------------- */
+
+/* Transition globale pour un changement smooth */
+body {
+    transition: background-color 0.5s ease, color 0.5s ease;
+    margin-left: 25rem;
+    padding: 0;
+    overflow: auto;
+    display: block; /* Change flex à block pour éviter le centrage global */
+    min-height: 100vh;
+}
+
+
+/* Fond selon le thème */
+body.theme-light {
+    background-color: #ffffff; /* Blanc cassé */
+    color: #000000; /* Texte gris foncé */
+    overflow: auto;
+}
+
+body.theme-dark {
+    background-color: #333; /* Gris anthracite */
+    color: #F4F4F4; /* Texte blanc */
+    overflow: auto;
+}
+
+/* ---------------------- */
+/* Container global        */
+/* ---------------------- */
+.overlay {
+    position: relative;
+    width: 90%;
+    max-width: 800px;
+    background: rgba(255, 255, 255, 0.85); /* Fond clair par défaut */
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(8px);
+    overflow: auto;
+}
+
+body.theme-dark .overlay {
+    background: rgba(50, 50, 50, 0.9); /* Fond sombre dans le thème noir */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    overflow: auto;
+}
+
+/* Logo */
+.logo {
+    font-family: 'Poppins', 'Roboto', sans-serif;
+    color: inherit;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo .image {
+  width: 80px; /* Increased from 50px to make it bigger */
+  height: 80px; /* Added height to maintain aspect ratio */
+  margin-right: 10px; /* Increased margin for better spacing */
+  border-radius: 50%; /* Makes the logo round */
+  object-fit: cover;
+}
+
+/* Boutons */
+.buttons-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.bouton {
+    padding: 1rem 2rem;
+    background-color: #007BFF;
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+    flex: 1;
+    text-align: center;
+}
+
+.bouton:hover {
+    background-color: #0056b3;
+}
+
+body.theme-dark .bouton {
+    background-color: #0056b3;
+    color: white;
+}
+
+body.theme-dark .bouton:hover {
+    background-color: #003d80;
+}
+
+/* Footer */
+.footer {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.85rem;
+    margin-top: 2rem;
+    color: #888;
+    text-align: center;
+}
+
+body.theme-dark .footer {
+    color: #CCC;
+}
+
+
+/* ---------------------- */
+/* Navigation Bar Styles  */
+/* ---------------------- */
+
+.navigation-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 18vw;
+    height: calc(100vh - 3rem); /* Réduction pour éviter que le dernier bouton se confonde avec la barre des tâches */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 0;
+    background-color: #f4f4f4; /* Clair */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+    overflow: auto; /* Permet de scroller si nécessaire */
+    transition: background-color 0.5s ease;
+}
+
+body.theme-dark .navigation-bar {
+    background-color: #333; /* Sombre */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo */
+.navigation-bar .logo {
+  display: flex;
+  flex-direction: column; /* Positionner les éléments verticalement */
+  align-items: center;    /* Centrer horizontalement */
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.5rem;      /* Taille de police augmentée */
+  font-weight: 600;
+  color: #2e2e2e;         /* Clair */
+  margin-bottom: 2rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+body.theme-dark .navigation-bar .logo {
+  color: #f4f4f4;         /* Sombre */
+}
+
+.navigation-bar .logo .image {
+  width: 6rem;          /* Taille de l'image augmentée */
+  height: 6rem;
+  object-fit: cover;
+  border-radius: 50%;     /* Coins arrondis pour un effet circulaire */
+  margin-bottom: 2rem;  /* Espace entre l'image et le texte */
+}
+
+/* Boutons de navigation */
+.navigation-bar .boutons {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem; /* Ajout d'une marge pour mieux espacer les boutons du haut */
+}
+
+.navigation-bar .bouton {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    width: 80%;
+    margin: 0 auto;
+    text-decoration: none;
+    background-color: transparent;
+    color: #2e2e2e; /* Texte clair */
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+body.theme-dark .navigation-bar .bouton {
+    color: #f4f4f4; /* Texte sombre */
+}
+
+.navigation-bar .bouton:hover {
+    background-color: #e5e5e5; /* Hover clair */
+}
+
+body.theme-dark .navigation-bar .bouton:hover {
+    background-color: #333; /* Hover sombre */
+}
+
+/* Icônes dans les boutons */
+.navigation-bar .bouton .image {
+    width: 1.5rem;
+    height: 1.5rem;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.navigation-bar .bouton:hover .image {
+    opacity: 1;
+}
+
+/* Bouton Déconnexion */
+.navigation-bar #disconnect {
+    margin-top: auto;
+    background-color: rgba(240, 52, 52, 0.1);
+    color: #e63939; /* Rouge léger */
+    font-weight: bold;
+    text-align: center;
+}
+
+.navigation-bar #disconnect:hover {
+    background-color: rgba(240, 52, 52, 0.3);
+    color: #c53030;
+}
+
+/* Admin-only boutons */
+.navigation-bar .bouton-admin {
+    font-weight: 700;
+    border-left: 4px solid #007BFF; /* Accent pour admin */
+    padding-left: 0.75rem;
+}
+
+body.theme-dark .navigation-bar .bouton-admin {
+    border-left-color: #0056b3;
+}
+
+/* ---------------------- */
+/* Barre de Recherche     */
+/* ---------------------- */
+
+
+/* Champs de recherche */
+#search-box {
+    flex: 1;
+    max-width: 500px;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: black;
+    background-color: #fff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+
+/* Boîte de filtre */
+#filter-box {
+  appearance: none; 
+  border: 1px solid #ccc;
+  margin-left: 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  padding: 0.5em 1em;
+  background-color: #fff;
+  color: inherit;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: black;
+}
+
+
+
+/* Bouton de recherche */
+#button-box {
+    margin-left: 1rem;
+    width: 3rem;
+    height: 3rem;
+    border: none;
+    border-radius: 50%;
+    background-color: #007BFF; /* Bleu vif */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+/* Icônes dans les boutons */
+#button-box img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Bouton de changement de thème */
+#theme-toggle {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#theme-toggle img {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+
+
+
+
+
+
+/* Actualités container */
+.actualites {
+    margin: 1rem auto;
+    max-width: 1200px;
+    padding: 5rem;
+    border-radius: 12px;
+    box-shadow: 0 7px 10px rgba(85, 85, 85, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Poppins', 'Roboto', sans-serif;
+}
+
+body.home-page.theme-light .actualites {
+    background-color: #FFFFFF; /* Fond blanc */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+body.home-page.theme-dark .actualites {
+    background-color: #2A2A2A; /* Fond sombre */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Titres des actualités */
+.actualites h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 0.5rem;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+body.home-page.theme-light .actualites h2 {
+    color: #333;
+    border-color: #DDD;
+}
+
+body.home-page.theme-dark .actualites h2 {
+    color: #F5F5F5;
+    border-color: #444;
+}
+
+
+
+
+
+
+
+
+
+.actualite:hover {
+  transform: translateY(-5px);
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+/* Titre de chaque carte d'actualité */
+.actualite-titre {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    transition: color 0.3s ease;
+}
+
+
+
+
+
+
+
+/* Détails des actualités */
+.actualite-details {
+    font-size: 0.9rem;
+    text-align: right;
+    transition: color 0.3s ease;
+}
+
+/* Message "Aucune actualité" */
+.aucune-actualite {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 2rem;
+    transition: color 0.3s ease;
+}
+
+.actualite img {
+  max-width: 100%;
+  max-height: 300px;           /* Fixe une hauteur maximale */
+  width: auto;
+  height: auto;
+  object-fit: contain;         /* Adaptation de l'image dans le conteneur sans la déformer */
+  display: block;
+  margin: 0 auto;
+}
+
+
+
+body.home-page.theme-light .aucune-actualite {
+    color: #888;
+}
+
+body.home-page.theme-dark .aucune-actualite {
+    color: #AAA;
+}
+
+
+/* -----------------------------------------------------------------------------
+   Signalements Page Styles
+----------------------------------------------------------------------------- */
+
+
+  
+  
+  /* Table des signalements */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: black;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #777373;
+    padding: 0.75rem;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    color: black;
+  }
+  
+  .table th {
+    background-color: #F2F2F2;
+    color: #333;
+  }
+  
+  body.signalements-page.theme-dark .table th {
+    background-color: #333;
+    color: #FFF;
+  }
+  
+  .table td {
+    background-color: #FFF;
+    color: inherit;
+  }
+  
+  body.signalements-page.theme-dark .table td {
+    background-color: #2A2A2A;
+    color: #F5F5F5;
+  }
+  
+
+ 
+  
+  /* Message "Aucun signalement" */
+  .text-center {
+    font-size: 1rem;
+    text-align: center;
+    /* On utilise la couleur héritée ou on peut forcer si besoin */
+    color: inherit;
+  }
+  
+  /* -----------------------------------------------------------------------------
+   Statistiques Page Styles
+----------------------------------------------------------------------------- */
+
+  
+  /* Conteneur principal */
+  .container {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+
+  
+  /* Titres */
+  .container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+  
+  body.statistiques-page.theme-light h1 {
+    color: #333;
+  }
+  
+  body.statistiques-page.theme-dark h1 {
+    color: #F5F5F5;
+  }
+  
+  /* Rapports Avancés */
+  .rapports-container {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: black;
+  }
+  
+  body.statistiques-page.theme-dark .rapports-container {
+    background-color: #333;
+  }
+  
+  .rapport p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+  }
+  
+
+  
+  /* Exporter les rapports */
+  .export-container {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    text-align: center;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: black;
+  }
+  
+
+  
+  .export-container a {
+    margin: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    color: #FFF;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .export-container .btn-primary {
+    background-color: #007BFF;
+  }
+  
+  .export-container .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  
+
+  
+  .export-container .btn-secondary {
+    background-color: #6C757D;
+  }
+  
+  .export-container .btn-secondary:hover {
+    background-color: #565D64;
+  }
+
+  
+/* -----------------------------------------------------------------------------
+   User List Page Styles
+----------------------------------------------------------------------------- */
+
+  
+  /* Conteneur principal */
+  .container {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+
+  
+  /* Titre */
+  .container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+  
+
+  
+  /* Table des utilisateurs */
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: black;
+  }
+  
+  .user-table th,
+  .user-table td {
+    border: 1px solid #DDD;
+    padding: 0.75rem;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+
+  
+  .user-table th {
+    background-color: #F2F2F2;
+    color: #333;
+  }
+  
+
+  .user-table td {
+    background-color: #FFF;
+    color: inherit;
+  }
+
+  
+  /* Bouton Bannir */
+  .btn {
+    padding: 6px 12px;
+    background-color: #D9534F;
+    color: #FFF;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+
+ 
+  
+  /* Message Aucun utilisateur */
+  .no-user {
+    font-size: 1rem;
+    text-align: center;
+    color: #888;
+  }
+  
+  body.user-list-page.theme-dark .no-user {
+    color: #AAA;
+  }
+  
+
+  /* ---------------------- */
+/* User Verification Page */
+/* ---------------------- */
+
+
+  
+  /* Conteneur principal */
+  .container {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+
+  
+  /* Titre principal */
+  .container h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+  
+
+  
+  /* Table de vérification */
+  .verification-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    color: black;
+  }
+  
+  .verification-table th,
+  .verification-table td {
+    border: 1px solid #DDD;
+    padding: 0.75rem;
+    text-align: left;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    /* Pas de couleur définie ici pour permettre l'héritage */
+  }
+  
+
+  
+  /* En mode clair, les en-têtes */
+  .verification-table th {
+    background-color: #F2F2F2;
+    color: #333;
+  }
+
+  
+  /* Cellules de données en mode clair */
+  .verification-table td {
+    background-color: #FFF;
+    color: inherit; /* Hérite de la couleur définie par le body */
+  }
+  
+
+  
+  /* Bouton Valider */
+  .btn {
+    padding: 6px 12px;
+    background-color: #007BFF; /* Bleu vif */
+    color: #FFF;
+    border: none;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .btn:hover {
+    background-color: #0056b3; /* Bleu foncé */
+    transform: scale(1.05);
+  }
+  
+  
+  /* Message Aucun utilisateur */
+  .verification-table .no-user {
+    font-size: 1rem;
+    text-align: center;
+    color: #888;
+  }
+  
+  body.user-verification-page.theme-dark .no-user {
+    color: #AAA;
+  }
+  
+
+/*****************/
+/*****  Profil edit ************/
+
+
+  
+  /* Conteneur principal */
+  .profile-edit-container {
+    margin: 2rem auto;
+    max-width: 600px;
+    padding: 2rem;
+    background-color: #FFFFFF;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    color: black;
+  }
+  
+
+  
+  /* Titre de la page */
+  h1.profile-edit-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    transition: color 0.3s ease;
+  }
+  
+
+  
+  /* Groupes du formulaire (si nécessaire en cas de personnalisations) */
+  .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Labels – si nécessaire */
+  .form-label {
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  
+  /* Champs de formulaire */
+  .form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    color: back;
+  }
+
+  
+  /* Bouton de soumission */
+  button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+    transform: scale(1.03);
+  }
+
