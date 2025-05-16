@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page de Connexion{% endblock %}
+
+{% block body %}
+
+<body class="register-page">
+    <div class="overlay">
+
+
+        <a href="{{ path('app_home') }}" class="logo">
+            <img src="{{ asset('icones/logoBC.png') }}" alt="Icône" class="image">Bank Connect
+        </a>
+        
+        <!-- Formulaire de Connexion -->
+        <div class="container">
+            <h1>Se connecter</h1>
+            
+            <form method="post" action="{{ path('app_login') }}">
+                <label for="username">Email</label>
+                <input type="email" id="username" name="_username" class="form-control" placeholder="Email" required autocomplete="off">
+
+                <label for="password">Mot de passe</label>
+                <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe" required autocomplete="new-password">
+                
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                
+                <button type="submit" class="bouton">Se connecter</button>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

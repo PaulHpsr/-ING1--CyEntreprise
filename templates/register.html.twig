@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Créer un compte | Bank Connect{% endblock %}
+
+{% block body %}
+<body class="register-page">
+    <div class="overlay">
+        {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+        {% endfor %}
+
+        <a href="{{ path('app_home') }}" class="logo">
+            <img src="{{ asset('icones/logoBC.png') }}" alt="Icône" class="image">Bank Connect
+        </a>
+
+        <!-- Formulaire de Création de compte -->
+        <div class="container">
+            <h1>Créer un compte</h1>
+
+            {{ form_start(form) }}
+                <div class="form-group">
+                    <div>
+                        {{ form_row(form.username) }}
+                        {{ form_row(form.firstName) }}
+                        {{ form_row(form.lastName) }}
+                        {{ form_row(form.email) }}
+                    </div>
+                    <div>
+                        {{ form_row(form.password) }}
+                        {{ form_row(form.birthdate) }}
+                        {{ form_row(form.sex) }}
+                        {{ form_row(form.memberType) }}
+                    </div>
+                </div>
+                {{ form_row(form.profilePicture) }}
+
+                <button type="submit" class="bouton">Valider</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</body>
+{% endblock %}

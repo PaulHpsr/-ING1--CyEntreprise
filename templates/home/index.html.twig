@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bank Connect | Plateforme IoT pour bâtiments intelligents{% endblock %}
+
+{% block body %}
+<div class="overlay">
+    <!-- Logo et titre -->
+    <a href="{{ path('app_home') }}" class="logo">
+        <img src="{{ asset('icones/logoBC.png') }}" alt="Logo" class="image"> Bank Connect
+    </a>
+
+    <!-- Boutons Connexion / Inscription -->
+    <div class="buttons-container">
+        <a href="{{ path('app_login') }}" class="bouton">Se connecter</a>
+        <a href="{{ path('app_register') }}" class="bouton">Créer un compte</a>
+    </div>
+
+    <!-- Pied de page -->
+    <div class="footer">
+        <p>© Site entièrement codé par : Paul Hopsore, Flavie CISSE, Pierre-Emmanuel TISSOT, Circe Moritz, Maxime ERNANDEZ.</p>
+    </div>
+</div>
+{% endblock %}
